@@ -1,0 +1,28 @@
+{
+  "name": "plugin-check",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10up/plugin-check.git"
+  },
+  "engines": {
+    "node": ">=16.19.1",
+    "npm": ">=8.19.3 <9"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^5.7.0",
+    "@wordpress/scripts": "^24.6.0"
+  },
+  "scripts": {
+    "wp-env": "wp-env",
+    "lint-js": "wp-scripts lint-js",
+    "format-js": "npm run lint-js -- --fix",
+    "prelint-php": "wp-env run composer 'install --no-interaction'",
+    "phpstan": "wp-env run composer run-script phpstan",
+    "lint-php": "wp-env run composer run-script lint",
+    "format-php": "wp-env run composer run-script format",
+    "pretest-php": "wp-env run composer 'install --no-interaction'",
+    "test-php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/$(basename $(pwd))/phpunit.xml.dist --verbose'",
+    "test-php-multisite": "wp-env run phpunit 'WP_MULTISITE=1 phpunit -c /var/www/html/wp-content/plugins/$(basename $(pwd))/tests/phpunit/multisite.xml --verbose'"
+  }
+}
